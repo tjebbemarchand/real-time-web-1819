@@ -21,7 +21,7 @@ app.get('/', function (req, res) {
 
 io.on('connection', function (socket) {
 	socket.on('chat', function (msg) {
-		const msgArray = msg.split('');
+		const msgArray = msg.toLowerCase().split('');
 		const alphabetWord = [];
 		
 		msgArray.forEach(function(wordChar, alphaIndex) {
