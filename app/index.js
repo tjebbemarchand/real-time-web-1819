@@ -27,14 +27,17 @@ io.on('connection', function (socket) {
 		msgArray.forEach(function(wordChar, alphaIndex) {
             if(wordChar === ' ') {
                 alphabetWord.push('---');
-            } else {
+            } else if(isNaN(parseInt(wordChar))) {
                 const index = dictionary.alphabet.indexOf(wordChar);
-
+    
                 if(index > -1) {
                     alphabetWord.push(index + 1);
                 } else {
                     alphabetWord.push(wordChar);
                 }
+            } 
+            else {
+                alphabetWord.push(`[${wordChar}]`);
             }
         });
 
