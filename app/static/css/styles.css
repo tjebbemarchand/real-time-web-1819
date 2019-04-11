@@ -1,0 +1,86 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+form.username-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 25%;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 3px;
+}
+
+form.username-form input {
+    width: 100%;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+form.username-form button {
+    display: block;
+    width: 100%;
+    background-color: rgb(32, 70, 238);
+    padding: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 3px;
+    transition: background-color 200ms ease;
+}
+
+form.username-form button:hover {
+    background-color: rgb(26, 56, 190);
+}
+
+form.messages-form {
+    background: #000;
+    padding: 3px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+
+form.messages-form input {
+    border: 0;
+    padding: 10px;
+    width: 90%;
+    margin-right: .5%;
+}
+
+form.messages-form button {
+    width: 9%;
+    background: rgb(130, 224, 255);
+    border: none;
+    padding: 10px;
+}
+
+#messages {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#messages li {
+    padding: 5px 10px;
+}
+
+#messages li:nth-child(odd) {
+    background: #eee;
+}
