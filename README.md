@@ -1,6 +1,6 @@
 # Chat App uitbreiding
 
-[Live link chat app](https://tjebbemarchand.github.io/tjebbe-wafs.github.io/app/)
+[Live link chat app](https://chat-app-tjebbe.herokuapp.com)
 
 ## Aanpassingen
 1. Ik heb een functie toegevoegd die je tekst bericht omzet naar de positie van de letter van het alfabet. Dus de "a" wordt een 1, "b" wordt een 2 etc.
