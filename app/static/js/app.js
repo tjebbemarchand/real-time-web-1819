@@ -1,33 +1,34 @@
 (function () {
     const socket = io();
 
+    let user;
+
     const usernameForm = document.querySelector('.username-form');
     const usernameInput = document.getElementById('username');
+    const messageForm = document.querySelector('.messages-form');
+    const messageInput = document.getElementById('message-input');
+    const overlay = document.querySelector('.overlay');
+    const messages = document.getElementById('messages');
+    const feedback = document.getElementById('feedback');
 
     usernameForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
         if(usernameInput.value.length > 0) {        
             socket.emit('new user', usernameInput.value, function(username) {
-                // Show username on client side.
+
             });
 
-            const chat = `
-                <ul id="messages"></ul>
-                <form class="messages-form" action="">
-                    <input id="input" autocomplete="off">
-                    <button>Send</button>
-                </form>
-            `;
+            user = usernameInput.value;
 
-            document.querySelector('body').insertAdjacentHTML('afterbegin', chat);
             usernameForm.parentNode.removeChild(usernameForm);
+            overlay.parentNode.removeChild(overlay);
 
-            document.querySelector('.messages-form').addEventListener('submit', function(e) {
+            messageForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                let msg = document.querySelector('#input').value;
+                let msg = document.querySelector('#message-input').value;
                 socket.emit('chat', msg);
-                document.querySelector('#input').value = "";
+                document.querySelector('#message-input').value = "";
                 return false;
             });
         }
@@ -37,6 +38,16 @@
         const li = document.createElement('li')
         const msgtext = document.createTextNode(`${data.username}: ${data.message}`);
         li.appendChild(msgtext);
-        document.querySelector('#messages').appendChild(li);
+        messages.appendChild(li);
+        feedback.innerHTML = '';
+    });
+    
+    messageInput.addEventListener('keypress', function() {
+        console.log(user);
+        socket.emit('typing', user);
+    });
+    
+    socket.on('typing', function(data) {
+        feedback.innerHTML = `<p><em>${data} is typing a message...</em></p>`;
     });
 }());

@@ -53,6 +53,10 @@ io.on('connection', function (socket) {
         socket.username = username;
         users.usernames.push(username);
     });
+
+    socket.on('typing', function(data) {
+        socket.broadcast.emit('typing', data);
+    });
 });
 
 io.on('disconnect', function() {

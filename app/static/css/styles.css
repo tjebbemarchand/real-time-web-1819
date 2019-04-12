@@ -15,10 +15,11 @@ form.username-form {
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
-    width: 25%;
+    width: 400px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
     padding: 20px;
     border-radius: 3px;
+    z-index: 1;
 }
 
 form.username-form input {
@@ -48,16 +49,27 @@ form.username-form button:hover {
     background-color: rgb(26, 56, 190);
 }
 
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
 form.messages-form {
     background: #000;
     padding: 3px;
     position: fixed;
     bottom: 0;
     width: 100%;
+    display: flex;
+    z-index: -1;
 }
 
-
-form.messages-form input {
+form.messages-form #message-input {
     border: 0;
     padding: 10px;
     width: 90%;
@@ -65,10 +77,16 @@ form.messages-form input {
 }
 
 form.messages-form button {
-    width: 9%;
-    background: rgb(130, 224, 255);
+    width: 10%;
+    background: rgb(32, 70, 238);
     border: none;
-    padding: 10px;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+}
+
+form.messages-form button:hover {
+    background-color: rgb(26, 56, 190);
 }
 
 #messages {
@@ -78,9 +96,13 @@ form.messages-form button {
 }
 
 #messages li {
-    padding: 5px 10px;
+    padding: 10px 15px;
 }
 
 #messages li:nth-child(odd) {
-    background: #eee;
+    background: rgba(32, 70, 238, 0.3);
+}
+
+#feedback p {
+    font-size: 16px;
 }
