@@ -43,7 +43,6 @@
     });
     
     messageInput.addEventListener('keypress', function() {
-        console.log(user);
         socket.emit('typing', user);
     });
     
