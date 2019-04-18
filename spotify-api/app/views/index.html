@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Spotify guess the song</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <form class="username-form">
+        <input type="text" id="username" placeholder="Enter a username">
+        <button>Get in!</button>
+    </form>
+    <div class="overlay"></div>
+
+    <div class="game">
+        <div class="chat">
+            <ul class="chat__guessess">
+                <li><span class="chat__user">Tjebbe:</span> Not Afraid</li>
+                <li><span class="chat__user">Karin:</span> Despacito</li>
+                <li><span class="chat__user">Tim:</span> Gangam Style</li>
+            </ul>
+
+            <a class="spotify-login" href="/login/spotify">Login to Spotify to begin</a>
+
+            <form class="chat__input" action="">
+                <input type="text" placeholder="Guess">
+                <button type="submit">Make guess</button>
+            </form>
+        </div>
+        <div class="users">
+            <h4>Users</h4>
+            <ul class="users__list">
+                <li>Tjebbe: <span>100pt</span></li>
+                <li>Karin: <span>100pt</span></li>
+                <li>Tim: <span>50pt</span></li>
+            </ul>
+        </div>
+        <div class="song">
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

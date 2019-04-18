@@ -1,0 +1,23 @@
+{
+  "name": "spotify-guess-song",
+  "version": "1.0.0",
+  "description": "A application where you get a preview of a random song. And you need to guess which song it is",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon app/server.js"
+  },
+  "author": "T. Marchand",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "node-fetch": "^2.3.0",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.11"
+  }
+}

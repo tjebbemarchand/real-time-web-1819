@@ -14,13 +14,22 @@ Als je bijvoorbeeld "appel" intikt, krijg je het volgende als resultaat: 1-16-16
 ### Toegevoegde waarden
 Ik heb deze functies toegevoegd om te oefenen met websockets.
 
-
 ## Real Time Application
-### Concept
-Ik haal data op van de populaire films van dit moment. Deze worden allemaal getoond op de webpagina. Hier kun je filteren op verschillende genres en doorklikken naar een detailpagina.
-Op de detailpagina kun je alle informatie zien over die specifieke film met afbeeldingen en een trailer.
-Op de overzichtpagina staat er ook een grafiek te staan met de verschillende genres. Zo kun je snel zien welke genres het populairst zijn deze week.
+### Het concept
+Ik ga een game maken waar verschillende gebruikers in een chatroom kunnen aanmelden. Deze gebruikers krijgen allemaal dezelfde willekeurig liedje uit een Spotify afspeellijst te horen. Dit liedje krijgen ze maar 5 seconden te horen en daarna moet ze raden welk liedje die was.
 
-### API
-[The Movie DB](https://developers.themoviedb.org/3/getting-started/introduction)
-Ik maak gebruik van de TMDb API. Dit is geen real time api, maar ik haal de datum 2x keer per dag op zodat de pagina wel blijft veranderen.
+Ze kunnen het liedje nog een keer afspelen, maar dan krijgen ze minder punten. Ook de gebruiker die het snelste het liedje heeft geraden, krijg meer punten.
+
+### API beschrijving
+#### API
+De API die ik gebruik
+
+#### Voorbeeld datapunt
+#### Rate limit
+#### Authorisatie
+
+### Schets met interactie
+
+### Data life cycle
+
+### Feedback

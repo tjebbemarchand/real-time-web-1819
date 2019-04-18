@@ -1,0 +1,192 @@
+:root {
+    --blue: rgb(23, 99, 231);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--blue);
+    margin: 0px;
+    font-family: sans-serif;
+}
+
+form.username-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    width: 400px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    border-radius: 3px;
+    z-index: 1;
+}
+
+form.username-form input {
+    width: 100%;
+    border: 1px solid lightgray;
+    margin-bottom: 10px;
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 3px;
+}
+
+form.username-form button {
+    display: block;
+    width: 100%;
+    background-color: rgb(32, 70, 238);
+    padding: 10px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 3px;
+    transition: background-color 200ms ease;
+}
+
+form.username-form button:hover {
+    background-color: rgb(26, 56, 190);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 20px;
+
+    height: 75vh;
+    width: 75vw;
+    z-index: -1;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.game div {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.chat {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+
+    background-color: white;
+    overflow: hidden;
+}
+
+.chat .chat__guessess  {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chat .chat__guessess li {
+    padding: 10px;
+}
+
+.chat .chat__guessess li:nth-child(odd) {
+    background: rgb(224, 224, 224);
+    color: black;
+}
+
+.chat .chat__guessess .chat__user {
+    color: var(--blue);
+    font-weight: bold;
+}
+
+.chat .spotify-login {
+    text-align: center;
+}
+
+.chat .chat__input {
+    position: fixed; 
+    background-color: green;
+    bottom: 0;
+    width: 100%;
+    grid-column: 1 / 2;
+
+    display: flex;
+}
+
+.chat .chat__input input[type=text] {
+    width: 90%;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+}
+
+.chat .chat__input button {
+    background-color: var(--blue);
+    color: white;
+    font-weight: bold;
+    border: none;
+    font-size: 14px;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+.chat .chat__input button:hover {
+
+}
+
+.users {
+    grid-column: 2 / 3;
+    grid-row: 1;
+
+    background-color: white;
+}
+
+.users h4 {
+    margin: 20px 20px 10px;
+    font-size: 22px;
+    width: 100px;
+    padding-bottom: 5px;
+}
+
+.users .users__list {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.users .users__list li {
+    padding: 5px 0;
+}
+
+.song {
+    grid-column: 2 / 3;
+    grid-row: 2;
+
+    background-color: white;
+}
+
+.song .playButton {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    border-radius: 100%;
+
+    margin: 50px auto 10px;
+}
+
+.song h5 {
+    font-size: 32px;
+    text-align: center;
+    margin: 0;
+}
