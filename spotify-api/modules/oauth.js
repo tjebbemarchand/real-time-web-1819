@@ -36,6 +36,7 @@ router.get('/callback', function (req, res) {
 		var access_token = body.access_token;
 		let uri = process.env.FRONTEND_URI || `http://localhost:${port}`;
 		req.session.accessToken = access_token;
+		// console.log(req.session.accessToken);
 		res.redirect(uri);
 		// res.redirect(uri + '?access_token=' + access_token);
 	});

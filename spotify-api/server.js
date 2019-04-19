@@ -1,3 +1,8 @@
+/* 
+export SPOTIFY_CLIENT_ID=632929177f1d41e2b520c76bc28790ef
+export SPOTIFY_CLIENT_SECRET=b8600bd2effc4cb8a58572f6858f7d88
+*/
+
 const express = require('express'),
       app = express(),
       server = require('http').createServer(app),
@@ -35,22 +40,29 @@ io.on('connection', function (socket) {
 });
 
 app.get('/', function(req, res) {
-    // fetch(getPlaylistTracksURL('37i9dQZF1DWTwCImwcYjDL?si=GvEGM8HKRCuT-ztkziaCuQ'), {
-    //     headers: {
-    //         'Authorization': 'Bearer ' + req.session.accessToken
-    //     }
-    // }).then(function(response) {
-    //     return response.json();
-    // }).then(function(data) {
-    //     const filteredSongs = filterPlaylistData(data.tracks.items);
-    //     req.session.randomSong = pickRandomSong(filteredSongs);
-    //     io.emit('song', req.session.randomSong.preview_url);
-    // });
+    fetch(getPlaylistTracksURL('37i9dQZF1DWTwCImwcYjDL?si=GvEGM8HKRCuT-ztkziaCuQ'), {
+        headers: {
+            'Authorization': 'Bearer ' + req.session.accessToken
+        }
+    }).then(function(response) {
+        // return response.json();
+        // console.log(req.session.accessToken);
+        // console.log(req.session.accessToken);
+        // console.log(response);
+    }).then(function(data) {
+        // const filteredSongs = filterPlaylistData(data.tracks.items);
+        // req.session.randomSong = pickRandomSong(filteredSongs);
+        // io.emit('song', req.session.randomSong.preview_url);
+    });
     res.sendFile(__dirname + '/views/index.html');
 });
 
+// app.get('/', function(req, res) {
+//     res.sendFile(__dirname + '/views/login.html');
+// });
+
 function getPlaylistTracksURL(trackID) {
-    return `https://api.spotify.com/v1/playlists/${trackID}/tracks`
+    return `https://api.spotify.com/v1/playlists/${trackID}/tracks`;
 }
 
 function pickRandomSong(songs) {

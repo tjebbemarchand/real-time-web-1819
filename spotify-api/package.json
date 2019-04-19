@@ -4,7 +4,7 @@
   "description": "A application where you get a preview of a random song. And you need to guess which song it is",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon app/server.js"
+    "dev": "nodemon server.js"
   },
   "author": "T. Marchand",
   "license": "ISC",

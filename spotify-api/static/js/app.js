@@ -11,8 +11,9 @@
         e.preventDefault();
         if(dom.usernameInput.value.length > 0) {        
             socket.emit('new user', dom.usernameInput.value);
-            dom.usernameForm.parentNode.removeChild(dom.usernameForm);
-            dom.overlay.parentNode.removeChild(dom.overlay);
+            // dom.usernameForm.parentNode.removeChild(dom.usernameForm);
+            // dom.overlay.parentNode.removeChild(dom.overlay);
+            window.location.href = 'http://localhost:3000/game';
         }
     });
 
