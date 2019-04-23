@@ -1,5 +1,5 @@
 :root {
-    --blue: rgb(23, 99, 231);
+    --green: #1db954;
 }
 
 * {
@@ -7,7 +7,7 @@
 }
 
 body {
-    background: var(--blue);
+    background: var(--green);
     margin: 0px;
     font-family: sans-serif;
 }
@@ -38,7 +38,7 @@ form.username-form input {
 form.username-form button {
     display: block;
     width: 100%;
-    background-color: rgb(32, 70, 238);
+    background-color: var(--green);
     padding: 10px;
     border: none;
     color: white;
@@ -46,10 +46,6 @@ form.username-form button {
     font-size: 16px;
     border-radius: 3px;
     transition: background-color 200ms ease;
-}
-
-form.username-form button:hover {
-    background-color: rgb(26, 56, 190);
 }
 
 .overlay {
@@ -105,9 +101,18 @@ form.username-form button:hover {
     color: black;
 }
 
+.chat .chat__guessess li.correct-answer {
+    background-color: var(--green);
+    color: white;
+}
+
 .chat .chat__guessess .chat__user {
-    color: var(--blue);
+    color: var(--green);
     font-weight: bold;
+}
+
+.chat .chat__guessess #feedback {
+    background: none;
 }
 
 .chat .spotify-login {
@@ -116,7 +121,7 @@ form.username-form button:hover {
 
 .chat .chat__input {
     position: fixed; 
-    background-color: green;
+    background-color: var(--green);
     bottom: 0;
     width: 100%;
     grid-column: 1 / 2;
@@ -132,17 +137,13 @@ form.username-form button:hover {
 }
 
 .chat .chat__input button {
-    background-color: var(--blue);
+    background-color: var(--green);
     color: white;
     font-weight: bold;
     border: none;
     font-size: 14px;
     padding: 5px 20px;
     cursor: pointer;
-}
-
-.chat .chat__input button:hover {
-
 }
 
 .users {
@@ -176,17 +177,11 @@ form.username-form button:hover {
     background-color: white;
 }
 
-.song .playButton {
-    width: 100px;
-    height: 100px;
-    background-color: black;
-    border-radius: 100%;
-
-    margin: 50px auto 10px;
+.song__player {
+    display: flex;
+    margin: 25px auto;
 }
 
-.song h5 {
-    font-size: 32px;
+.song h2 {
     text-align: center;
-    margin: 0;
 }

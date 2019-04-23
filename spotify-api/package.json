@@ -4,13 +4,16 @@
   "description": "A application where you get a preview of a random song. And you need to guess which song it is",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js"
+    "dev": "nodemon server.js --ignore ./database/"
   },
   "author": "T. Marchand",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.18.0",
+    "diskdb": "^0.1.17",
     "express": "^4.16.4",
     "express-session": "^1.16.1",
+    "lowdb": "^1.0.0",
     "node-fetch": "^2.3.0",
     "querystring": "^0.2.0",
     "request": "^2.88.0",
