@@ -1,0 +1,96 @@
+:root {
+    --spotify-green: #1db954;
+    --spotify-green-hover: #0c963c;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--spotify-green);
+}
+
+.title {
+    color: white;
+    text-align: center;
+}
+
+.sign-in {
+    background-color: white;
+    width: 500px;
+    padding-bottom: 20px;
+    z-index: 1;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sign-in__form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 30px 30px 0;
+    font-size: 16px;
+}
+
+.sign-in__form h3 {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.sign-in__form input {
+    width: 100%;
+    padding: 5px 10px;
+    font-size: inherit;
+    display: inline-block;
+}
+
+.sign-in__form button {
+    width: 100%;
+    border: none;
+    background-color: var(--spotify-green);
+    color: white;
+    font-size: inherit;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-top: 5px;
+}
+
+.sign-in__form button:hover {
+    background-color: var(--spotify-green-hover);
+}
+
+.sign-in__users {
+    list-style: none;
+    padding: 30px 30px 0;
+    margin: 0;
+}
+
+.sign-in__users h3 {
+    /* width: 100%; */
+    text-align: center;
+    margin: 0;
+}
+
+.sign-in__users ul {
+    text-align: center;
+    list-style: none;
+    padding-left: 0;
+}
+
+.sign-in__users li {
+    padding: 5px 0;
+}
+
+.sign-in__play-btn {
+    background-color: red;
+    color: white;
+}
