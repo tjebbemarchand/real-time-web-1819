@@ -13,7 +13,7 @@ If you type in the word 'apple' for example, you get the following as a result: 
 I added these modifications to practice with websockets.
 
 ## Spotify guess the song
-[Live link guess song game](https://chat-app-tjebbe.herokuapp.com)
+[Live link guess song game](https://spotify-guess-song.herokuapp.com/)
 
 ### The concept
 I'm going to make a game where multipule users can enter a lobby and they will be asked to guess a song based on a couple of seconds from the song. These users will get the same song and user can fill in the artist and the song name. You get 50 points for each right answer, so you can get 100 points per round.
