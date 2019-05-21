@@ -50,7 +50,7 @@ const buildRoute = utilities.buildRoute;
 const game = require('./modules/routes/game');
 
 const config = {
-    port: 3000 || process.env.PORT
+    port: process.env.PORT || 3000
 };
 
 // Oauth
