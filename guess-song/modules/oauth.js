@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 const querystring = require('querystring');
-const port = 3000;
+const port = 3000 || process.env.PORT;
 
 let redirect_uri = process.env.REDIRECT_URI || `http://localhost:${port}/callback`;
 
