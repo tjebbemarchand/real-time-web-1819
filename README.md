@@ -98,6 +98,7 @@ On events
 
 ### What can be added to the app (future ideas)
 - Change the number of rounds
+- Better styling
 - Leaderboards
 - Multipule rooms
 - Select from differen genres or playlists

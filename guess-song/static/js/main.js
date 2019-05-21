@@ -61,6 +61,7 @@ window.addEventListener('load', function (event) {
     socket.on('play game', function () {
         clearPage();
         renderGame();
+        document.title = "Spotify game - guess the songs";
 
         counter(5);
     });
@@ -106,6 +107,8 @@ window.addEventListener('load', function (event) {
     });
 
     socket.on('game done', function (users) {
+        document.title = "Spotify game - game done";
+
         const sortedUsers = sort(users);
 
         const popup = `
@@ -123,12 +126,12 @@ window.addEventListener('load', function (event) {
         `;
 
         document.body.insertAdjacentHTML('afterbegin', popup);
-
         document.querySelector('.form-game-done').addEventListener('submit', function(e) {
             e.preventDefault();
 
             socket.emit('game done');
             window.location.href = "/";
+            document.title = "Spotify game - lobby";
         });
     });
 
