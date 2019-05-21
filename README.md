@@ -1,47 +1,107 @@
+
 # Real Time Web
 ## Chat App uitbreiding
 [Live link chat app](https://chat-app-tjebbe.herokuapp.com)
 
-### Aanpassingen
-1. Ik heb een functie toegevoegd die je tekst bericht omzet naar de positie van de letter van het alfabet. Dus de "a" wordt een 1, "b" wordt een 2 etc.
-Als je bijvoorbeeld "appel" intikt, krijg je het volgende als resultaat: 1-16-16-5-12. Alle cijfers worden afgevangen door er blokhaken eromheen te zetten. Als je een 1 intikt, dan wordt dat [1], zodat je nog wel ziet dat het een cijfer is. En alle tekens blijven je zien.
-2. Er is de mogelijkheid toevoegd dat je een eigen gebruiksnaam kan invullen voordat je kunt chatten.
-3. Ik heb een broadcast toegevoegd die laat weten aan andere gebruikers als iemand aan het typen is.
+### Modifications
+1. I added a function to convert text to the position of the letter in the alphabet. So the 'a' will be a 1, 'b' will become a 2 etc.
+If you type in the word 'apple' for example, you get the following as a result: 1-16-16-12-5. All numbers will be captured and the '[]' characters will goes around the number. So if the number 1 is typed, this will become: [1]. So you still see that is a number.
+2. Every user can fill in there own username.
+3. A broadcast is added so the other user knows when you are typing.
 
-### Toegevoegde waarden
-Ik heb deze functies toegevoegd om te oefenen met websockets.
+### Why these modifications
+I added these modifications to practice with websockets.
 
 ## Spotify guess the song
-### Het concept
-Ik ga een game maken waar verschillende gebruikers in een chatroom kunnen aanmelden. Deze gebruikers krijgen allemaal dezelfde willekeurig liedje uit een Spotify afspeellijst te horen. Dit liedje krijgen ze maar 5 seconden te horen en daarna moet ze raden welk liedje die was.
-Ze kunnen het liedje nog een keer afspelen, maar dan krijgen ze minder punten. Ook de gebruiker die het snelste het liedje heeft geraden, krijg meer punten.
+[Live link guess song game](https://chat-app-tjebbe.herokuapp.com)
 
-### API beschrijving
-#### Spotify API
-[Link naar Spotify API](https://developer.spotify.com/documentation/web-api/)
+### The concept
+I'm going to make a game where multipule users can enter a lobby and they will be asked to guess a song based on a couple of seconds from the song. These users will get the same song and user can fill in the artist and the song name. You get 50 points for each right answer, so you can get 100 points per round.
 
-#### Voorbeeld datapunt
-![Alle datapunten van mijn applicatie](docs/data.jpg)
+### The API
+I going to make use of the Spotify API. You need to have a access token to able to get access to the library. You can get an access token if you give your Spotify account access to the app.
+[Spotify API link](https://developer.spotify.com/documentation/web-api/)
+
+#### Example datapoints
+![Datapoints in my application](docs/datapoints.jpg)
 
 #### Rate limit
-De rate limit wordt niet specifiek aangegeven. Elke applicatie met een 'Client ID' heeft zijn eigen rate limit. Het maakt niet uit hoeveel gebruikers er per applicatie ingelogd zijn.
+There is no rate limit perse. Every application has there own 'client id' and his own rate limit. It doesn't matter how many users are logged in at a time.
 
-#### Autorisatie
-Om gebruik te maken van de Spotify API, moet je op de developers website van Spotify aangeven welke app gebruik gaat maken van de API. Als dit gedaan is, krijg je een client id en een client secret key die je mee moet geven tijdens de autorisatie. Je krijgt een access token terug waarmee je requests kan maken.
-Ook moet je op de website aangegeven waar de gebruiker naartoe verwezen moet worden als de gebruiker toegestaan heeft.
+#### Authentication
+To use the Spotify API, you have to indicate which app is going to use the API. If this is done, you get a client id and a client secret key. These keys will go along with the authentication. An access token is returned by which you can do requests to the Spotify API.
 
-### Schets met interactie
-![Applicatie schets met interactie aanduidingen](docs/applicatie-schets.jpg)
-Dit is mijn hoofdscherm van de applicatie. Hiervoor zit nog een overlay scherm waar je jouw gebruikersnaam in kan vullen. De gebruikersnaam komt rechts in het lijstje bij te staan.
+### First iteration
+#### Drawing with interaction
+![Application drawing with interaction](docs/applicatie-schets-1.jpg)
+This is the main screen for the application. Before this screen, there is a popup where can fill in your username to play the game with. Your username is filled in on right in the list.
 
-### Data life cycle
-![Diagram van applicatie](docs/diagram.jpg)
-Mijn applicatie staat op deze manier verbonden met mijn Node server en de Spotify API. Ze moeten inloggen met de OAuth standaard om een access token te krijgen. Vervolgens staan ze in verbinding met de Node server.
+#### Data life cycle
+![Data life cycle](docs/data-life-cycle-1.jpg)
+My application is connection with the Node server and the Spotify API. All users have to login with OAuth to get play the game. After that, there are connected with my Node server.
 
-### Feedback
-Waar ik graag feedback op zou willen:
-1. Ik twijfel nog over de datapunten afbeelding. Is het zo duidelijk voor de lezer welke data ik gebruik?
-2. De diagram van hoe mijn applicatie verbonden staat met de API en de gebruikers weet ik niet goed of het zo klopt en of het duidelijk is?
-3. Hoe ik in het algemeen de README heb beschreven?
+### Second iteration
+I decided to start over with the development of the application. I had many bugs to fixed, so it was better to make a whole new server than try to fix all the bugs.
+I still have the same concept and idea.
 
-Op deze punten zou ik graag feedback op willen vragen. Bedankt voor het doorkijken.
+### Data Life Cycle
+#### OAuth authentication
+![Interactie schets](docs/data-life-cycle-2.jpg)
+
+#### App flow
+![Interactie schets](docs/oauth.jpg)
+
+### Interactie schets
+![Interactie schets](docs/interactie-schets-1.jpg)
+![Interactie schets](docs/interactie-schets-2.jpg)
+![Interactie schets](docs/interactie-schets-3.jpg)
+
+There are 3 main screens for the game.
+1. The lobby screen where players can join.
+2. The game itself. Where songs are played and guesses can be made.
+3. The results screen. This is a popup above the game screen. To let the players know who has won this game.
+
+### Web socket events
+I have multipule emits and on events for the socket.io library. These send data between the server and the client for real time page manipulation.
+
+User emits
+.emit('user success')
+.emit('new user')
+.emit('user failed')
+.emit('all users)
+.emit('delete user')
+
+Game emits
+.emit('game started')
+.emit('play game')
+.emit('game done')
+
+Song emits
+.emit('all songs')
+.emit('play song')
+.emit('stop song')
+.emit('get results')
+
+On events
+.on('connection')
+.on('new user')
+.on('update score')
+.on('game done')
+.on('disconnect')
+
+### Installing
+
+    git clone https://github.com/tjebbemarchand/real-time-web-1819.git
+    cd guess-song
+    npm install
+    npm run
+
+### What can be added to the app (future ideas)
+- Change the number of rounds
+- Leaderboards
+- Multipule rooms
+- Select from differen genres or playlists
+- Invite other players
+- Account system
+- Store popular songs
+- Animations
