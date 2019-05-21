@@ -1,7 +1,6 @@
 import {
     clearPage,
-    renderGame,
-    renderLogin
+    renderGame
 } from './modules/render.js';
 
 window.addEventListener('load', function (event) {
@@ -79,7 +78,7 @@ window.addEventListener('load', function (event) {
             const audio = playSong(currentSong.preview_url);
     
             socket.on('stop song', function () {
-                counter(9);
+                counter(14);
                 stopSong(audio);
     
                 socket.on('get results', function () {
@@ -107,21 +106,7 @@ window.addEventListener('load', function (event) {
     });
 
     socket.on('game done', function (users) {
-        /* const userss = [
-            {
-                username: 'Karin',
-                score: 50
-            },
-            {
-                username: 'Tjebbe',
-                score: 100
-            },
-            {
-                username: 'Tim',
-                score: 0
-            }
-        ]; */
-        const sortedUsers = sort(users); // Check with dummy data
+        const sortedUsers = sort(users);
 
         const popup = `
             <div class="popup">
@@ -199,7 +184,6 @@ window.addEventListener('load', function (event) {
 
         const songPanelSongName = document.querySelector('.song-panel__song-name');
         songPanelSongName.insertAdjacentHTML('beforebegin', albumCover);
-        // songPanel.insertAdjacentHTML('beforeend', progressBar);
     }
 
     function playSong(url) {
@@ -214,28 +198,9 @@ window.addEventListener('load', function (event) {
         audio.pause();
     }
 
-    /* function startProgressBar() {
-        const percent = document.querySelector('.progress-wrap').dataset.progressPercent / 100;
-        const progressBarWidth = document.querySelector('.progress-wrap').offsetWidth;
-        const progressTotal = percent * progressBarWidth;
-        const animationLength = 7500;
-
-        $('.progress-bar').stop().animate({
-            left: progressTotal
-        }, animationLength);
-    }
-
-    function resetProgressBar() {
-        $('.progress-bar').css({
-            left: 0
-        });
-    } */
-
     function removeCurrentSong() {
         const albumCover = document.querySelector('.album-cover') || false;
         const songName = document.querySelector('.song-panel__song-name') || false;
-
-        console.log(songName, '  Remove current song functie');
 
         if (albumCover) {
             albumCover.parentNode.removeChild(albumCover);
@@ -275,28 +240,4 @@ window.addEventListener('load', function (event) {
 
         document.querySelector('.song-panel__song-name').innerHTML = `${currentSong.name} - ${currentSong.artist.name}`;
     }
-
-    /* function renderPopup() {
-        clearPage();
-
-        const html = `
-            <div class="popup">
-                <div class="popup__content">
-                    <h2>Results</h2>
-                    <ul class="popup__users">
-                        <li class="popup__user popup__user--winner">1: Tjebbe - 100 punten</li>      
-                        <li class="popup__user">2: Karin - 100 punten</li>      
-                        <li class="popup__user">3: Tjebbe - 100 punten</li>      
-                    </ul>
-                    <form class="form-game-done">
-                        <button class="form-game-done__button" type="submit">Back to lobby</button>
-                    </form>
-                </div>
-            </div>
-        `;
-
-        document.body.insertAdjacentHTML('afterbegin', html);
-    }
-
-    renderPopup(); */
 });

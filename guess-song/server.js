@@ -113,6 +113,7 @@ io.on('connection', function (socket) {
     socket.on('game done', function() {
         database.spotifyGame.users = [];
         database.spotifyGame.songs = [];
+        round = 1;
         database.spotifyGame.gameStarted = false;
     });
 
@@ -150,7 +151,7 @@ function playGame() {
                     io.emit('get results');
                     round++;
                     playGame();
-                }, 10000); // Time to guess
+                }, 15000); // Time to guess
                 clearTimeout(stopSongTimeout);
             }, 7500) // Songs stops
             clearTimeout(playSongTimeout);
