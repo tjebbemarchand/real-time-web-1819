@@ -1,4 +1,3 @@
-
 # Real Time Web
 ## Chat App uitbreiding
 [Live link chat app](https://chat-app-tjebbe.herokuapp.com)

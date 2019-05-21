@@ -34,7 +34,7 @@ router.get('/callback', function (req, res) {
 	};
 	request.post(authOptions, function (error, response, body) {
 		var access_token = body.access_token;
-		let uri = process.env.FRONTEND_URI || `http://localhost:${port}/getuserinfo`;
+		let uri = process.env.FRONTEND_URI || `http://localhost:${port}/`;
 		req.session.accessToken = access_token;
 		res.redirect(uri);
 	});

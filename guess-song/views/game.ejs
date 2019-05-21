@@ -1,0 +1,41 @@
+<% include ./partials/header %>
+
+<body class="album-background-white">
+    <div class="sign-in">
+        <h1 class="title">Guess a random song</h1>
+
+        <% if(accessToken) { %>
+            <form class="sign-in__form sign-in__form--username">
+                <h3>Join the game</h3>
+                <input type="text" name="username" placeholder="Enter your username?">
+                <button type="submit">Join game</button>
+            </form>
+        <% } else { %>
+            <form action="/login/spotify" class="sign-in__form sign-in__form--spotify">
+                <h3>Login to Spotify to play the game</h3>
+                <button type="submit">Login</button>
+            </form>
+        <% } %>
+
+        <div class="users">
+            <h3>Current users in lobby</h3>
+            <ul class="users__list">
+                <% if(users) { %>
+                    <% users.forEach(function(user) { %>
+                        <li><%= user.username %></li>
+                    <% }); %>
+                <% } %>
+            </ul>
+        </div>
+
+
+        <form class="play">
+            <button class="play__btn" type="submit">Play game</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js" type="module"></script>
+</body>
+
+<% include ./partials/footer %>

@@ -1,105 +1,52 @@
 const axios = require('axios')
 
-module.exports = class spotifyApiClass {
-    constructor(obj) {
-        this.clientId = obj.clientId
-        this.clientSecret = obj.clientSecret
-        this.playlistId = obj.playlistId
-        this.url = 'https://api.spotify.com/v1'
-        this.playedCache = []
-        this.cachePlaylist
-        this.currentTrack
-
-        return new Promise(resolve => {
-            console.log('test');
-            this.createToken().then(async res => {
-                await this.init()
-                resolve(this)
-            })
-        })
-    }
-
-    async createToken() {
-        return await axios({
-                url: 'https://accounts.spotify.com/api/token',
-                method: 'post',
-                params: {
-                    grant_type: 'client_credentials'
-                },
+module.exports = {
+    getData: async function (settings) {
+        return await axios(`https://api.spotify.com/v1/${settings.endpoint}`, {
                 headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                auth: {
-                    username: process.env.SPOTIFY_clientId,
-                    password: process.env.SPOTIFY_clientSecret
+                    'Authorization': 'Bearer ' + settings.acces_token
                 }
             })
-            .then(res => {
-                console.log(res);
-                // this.token = res.data
-                // return
+            .then(function (response) {
+                return response.data.items;
             })
-            .catch(error => console.error('error'))
-    }
+            .catch(function (error) {
+                console.log(error);
+            });
+    },
+    filterData: async function (tracks) {
+        const filteredTracks = await tracks.map(function (track) {
+            return {
+                album_name: track.track.album.name,
+                artist: track.track.artists && track.track.artists[0] ? track.track.artists[0] : track.track.artists.name,
+                length: track.track.duration_ms,
+                href: track.track.href,
+                id: track.track.id,
+                name: track.track.name,
+                popularity: track.track.popularity,
+                preview_url: track.track.preview_url,
+                release_date: track.track.album.release_date,
+                images: track.track.album.images
+            };
+        }).filter(function(track) {
+            if(track.preview_url !== null) {
+                return track;
+            } 
+        });
 
-    getTrackPage(url) {
-        console.log('Getting tracks')
-
-        return axios({
-                url: url ? url : this.url + `/playlists/${this.playlistId}`,
-                headers: {
-                    Authorization: `${this.token.token_type} ${this.token.access_token}`
-                }
-            })
-            .then(res => res.data)
-            .catch(err => console.error(err))
-    }
-
-    async getAllTracks(url) {
-        if (!this.cachePlaylist) {
-            this.cachePlaylist = await this.getTrackPage()
-            return this.getAllTracks(this.cachePlaylist.tracks.next)
+        return filteredTracks;
+    },
+    getRandomSongs: function (arr, n) {
+        var result = new Array(n),
+            len = arr.length,
+            taken = new Array(len);
+        if (n > len)
+            throw new RangeError("getRandom: more elements taken than available");
+        while (n--) {
+            var x = Math.floor(Math.random() * len);
+            result[n] = arr[x in taken ? taken[x] : x];
+            taken[x] = --len in taken ? taken[len] : len;
         }
-
-        if (url) {
-            let data = await this.getTrackPage(url)
-
-            this.cachePlaylist.tracks.items = this.cachePlaylist.tracks.items.concat(
-                data.items
-            )
-            return this.getAllTracks(data.next)
-        }
-
-        return new Promise((resolve, reject) => {
-            resolve()
-        })
+        return result;
     }
-
-    filterOnPreview(arr) {
-        this.cachePlaylist.tracks.items = arr.filter(
-            track => track.track.preview_url !== null
-        )
-    }
-
-    getRandomTrack(arr) {
-        let temp = this.cachePlaylist.tracks.items[
-            Math.floor(Math.random() * this.cachePlaylist.tracks.items.length)
-        ]
-
-        if (!this.playedCache.includes(temp.track.id)) {
-            this.playedCache.push(temp.track.id)
-            this.currentTrack = temp
-            return temp
-        }
-
-        console.log('All songs used from this playlist')
-        this.playedCache = []
-        return this.getRandomTrack()
-    }
-
-    async init() {
-        await this.getAllTracks()
-        this.filterOnPreview(this.cachePlaylist.tracks.items)
-    }
-}
+};
