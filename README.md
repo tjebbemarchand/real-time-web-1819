@@ -1,4 +1,3 @@
-
 # Real Time Web
 ## Chat App uitbreiding
 [Live link chat app](https://chat-app-tjebbe.herokuapp.com)
@@ -16,7 +15,7 @@ I added these modifications to practice with websockets.
 [Live link guess song game](https://spotify-guess-song.herokuapp.com/)
 
 ### The concept
-I'm going to make a game where multipule users can enter a lobby and they will be asked to guess a song based on a couple of seconds from the song. These users will get the same song and user can fill in the artist and the song name. You get 50 points for each right answer, so you can get 100 points per round.
+I'm going to make a game where multipule users can enter a lobby and they will be asked to guess a song based on a couple of seconds from the song. These users will get the same song and user can fill in the artist and the song name. You get 50 points for each right answer, so you can get 100 points in total per round if you have both questions correct.
 
 ### The API
 I going to make use of the Spotify API. You need to have a access token to able to get access to the library. You can get an access token if you give your Spotify account access to the app.
@@ -60,6 +59,16 @@ There are 3 main screens for the game.
 1. The lobby screen where players can join.
 2. The game itself. Where songs are played and guesses can be made.
 3. The results screen. This is a popup above the game screen. To let the players know who has won this game.
+
+### Web screens
+![Web screen 1](docs/web-screens/web-screen-1.jpg)
+![Web screen 2](docs/web-screens/web-screen-2.jpg)
+![Web screen 3](docs/web-screens/web-screen-3.jpg)
+![Web screen 4](docs/web-screens/web-screen-4.jpg)
+![Web screen 5](docs/web-screens/web-screen-5.jpg)
+![Web screen 6](docs/web-screens/web-screen-6.jpg)
+
+The final result looks like these screenshots above. The version works with multipule users and multipule different songs.
 
 ### Web socket events
 I have multipule emits and on events for the socket.io library. These send data between the server and the client for real time page manipulation.
