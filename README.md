@@ -45,10 +45,10 @@ I still have the same concept and idea.
 
 ### Data Life Cycle
 #### OAuth authentication
-![Interactie schets](docs/data-life-cycle-2.jpg)
+![Interactie schets](docs/oauth.jpg)
 
 #### App flow
-![Interactie schets](docs/oauth.jpg)
+![Interactie schets](docs/data-life-cycle-2.jpg)
 
 ### Interactie schets
 ![Interactie schets](docs/interactie-schets-1.jpg)
