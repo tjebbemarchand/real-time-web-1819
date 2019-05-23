@@ -74,45 +74,29 @@ The final result looks like these screenshots above. The version works with mult
 I have multipule emits and on events for the socket.io library. These send data between the server and the client for real time page manipulation.
 
 User emits
-.emit('user success')
-
-.emit('new user')
-
-.emit('user failed')
-
-.emit('all users)
-
-.emit('delete user')
-
+- .emit('user success')
+- .emit('new user')
+- .emit('user failed')
+- .emit('all users)
+- .emit('delete user')
 
 Game emits
-.emit('game started')
-
-.emit('play game')
-
-.emit('game done')
+- .emit('game started')
+- .emit('play game')
+- .emit('game done')
 
 Song emits
-.emit('all songs')
-
-.emit('play song')
-
-.emit('stop song')
-
-.emit('get results')
-
+- .emit('all songs')
+- .emit('play song')
+- .emit('stop song')
+- .emit('get results')
 
 On events
-.on('connection')
-
-.on('new user')
-
-.on('update score')
-
-.on('game done')
-
-.on('disconnect')
-
+- .on('connection')
+- .on('new user')
+- .on('update score')
+- .on('game done')
+- .on('disconnect')
 
 ### Installing
 
