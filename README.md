@@ -1,3 +1,4 @@
+
 # Real Time Web
 ## Chat App uitbreiding
 [Live link chat app](https://chat-app-tjebbe.herokuapp.com)
@@ -22,7 +23,7 @@ I going to make use of the Spotify API. You need to have a access token to able 
 [Spotify API link](https://developer.spotify.com/documentation/web-api/)
 
 #### Example datapoints
-![Datapoints in my application](docs/datapoints.jpg)
+![Datapoint](docs/datapoint.jpg)
 
 #### Rate limit
 There is no rate limit perse. Every application has there own 'client id' and his own rate limit. It doesn't matter how many users are logged in at a time.
@@ -44,11 +45,15 @@ I decided to start over with the development of the application. I had many bugs
 I still have the same concept and idea.
 
 ### Data Life Cycle
+#### Data Life Cycle
+![Datapoints in my application](docs/data-life-cycle-2.jpg)
+![Datapoints in my application](docs/datapoints.jpg)
+
 #### OAuth authentication
 ![Interactie schets](docs/oauth.jpg)
 
 #### App flow
-![Interactie schets](docs/data-life-cycle-2.jpg)
+![Interactie schets](docs/app-flow.jpg)
 
 ### Interactie schets
 ![Interactie schets](docs/interactie-schets-1.jpg)
@@ -73,30 +78,60 @@ The final result looks like these screenshots above. The version works with mult
 ### Web socket events
 I have multipule emits and on events for the socket.io library. These send data between the server and the client for real time page manipulation.
 
-User emits
+**User emits**
 - .emit('user success')
-- .emit('new user')
+Verstuurd de server als de user nog niet bestaat, zodat de username form weggehaald kan worden.
+
 - .emit('user failed')
+Verstuurd de server als de user al wel bestaat, zodat de client weet dat die een nieuwe username moet invullen.
+
+- .emit('new user')
+Verstuurd de client naar de server als er een nieuwe username binnenkomt.
+
 - .emit('all users)
+Verstuurd de server om alle usernames te renderen op de pagina.
+
 - .emit('delete user')
+Verstuurd de client als diegene uit het spel gaat.
 
-Game emits
+**Game emits**
 - .emit('game started')
+Verstuurd de server als het spel begonnen is zodat iedereen in de lobby meekan.
+
 - .emit('play game')
+Verstuurd de client als de user op play game klikt.
+
 - .emit('game done')
+Verstuurd de server als alle rondes voorbij zijn naar iedereen.
 
-Song emits
+**Song emits**
 - .emit('all songs')
-- .emit('play song')
-- .emit('stop song')
-- .emit('get results')
+Verstuurd de server naar iedereen met alle liedjes zodat daarmee het spel gespeeld kan worden.
 
-On events
+- .emit('play song')
+Verstuurd de server om de client te laten weten dat het liedje afgespeeld moet worden.
+
+- .emit('stop song')
+Verstuurd de server om de client te laten weten dat het liedje gestopt moet worden.
+
+- .emit('get results')
+Verstuurd de server om alle resultaten op te halen.
+
+**On events**
 - .on('connection')
+Krijgt de server binnen als er een nieuwe connectie gemaakt wordt.
+
 - .on('new user')
+Krijgt de server als er een nieuwe user binnenkomt die de server op moet slaan.
+
 - .on('update score')
+Krijgt de server binnen als de score geupdate moet worden.
+
 - .on('game done')
+Krijgt de server binnen als de game helemaal afgelopen is zodat die alles kan leegmaken.
+
 - .on('disconnect')
+Krijgt de server binnen als een user weggaat uit het spel.
 
 ### Installing
 
